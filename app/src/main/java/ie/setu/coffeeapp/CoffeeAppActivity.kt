@@ -3,6 +3,7 @@ package ie.setu.coffeeapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import timber.log.Timber
+import timber.log.Timber.i
 
 
 class CoffeeAppActivity : AppCompatActivity() {
@@ -12,6 +13,6 @@ class CoffeeAppActivity : AppCompatActivity() {
 
         Timber.plant(Timber.DebugTree())
 
-        Timber.i("CoffeeApp Activity started..")
+        i("CoffeeApp Activity started..")
     }
 }
