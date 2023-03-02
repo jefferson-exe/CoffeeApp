@@ -13,12 +13,15 @@ class CoffeeAppActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coffeeapp)
 
+        binding = ActivityCoffeeappBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         Timber.plant(Timber.DebugTree())
 
-        btnAdd.setOnClickListener() {
+        i("CoffeeApp Activity started..")
+
+        binding.btnAdd.setOnClickListener() {
             i("add Button Pressed")
         }
-
-        i("CoffeeApp Activity started..")
     }
 }

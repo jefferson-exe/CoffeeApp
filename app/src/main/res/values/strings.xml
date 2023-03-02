@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">CoffeeApp</string>
-    <string name="button_addCoffee">Add Placemark</string>
-    <string name="hint_coffeeTitle">Placemark Title</string>
+    <string name="button_addCoffee">Add Coffee</string>
+    <string name="hint_coffeeTitle">Coffee Title</string>
 </resources>
