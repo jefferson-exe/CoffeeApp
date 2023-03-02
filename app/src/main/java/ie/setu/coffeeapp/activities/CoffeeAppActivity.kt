@@ -11,7 +11,9 @@ import timber.log.Timber.i
 class CoffeeAppActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCoffeeappBinding
+
     var coffeeapp = CoffeeAppModel()
+    val coffees = ArrayList<CoffeeAppModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,10 @@ class CoffeeAppActivity : AppCompatActivity() {
         binding.btnAdd.setOnClickListener() {
             coffeeapp.title = binding.coffeeappTitle.text.toString()
             if (coffeeapp.title.isNotEmpty()) {
+                coffees.add(coffeeapp)
                 i("add Button Pressed: $coffeeapp.title")
+                for (i in coffees.indices)
+                { i("Placemark[$i]:${this.coffees[i]}") }
             }
             else {
                 Snackbar
