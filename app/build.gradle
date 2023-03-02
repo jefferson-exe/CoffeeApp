@@ -7,6 +7,10 @@ android {
     namespace 'ie.setu.coffeeapp'
     compileSdk 33
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "ie.setu.coffeeapp"
         minSdk 30

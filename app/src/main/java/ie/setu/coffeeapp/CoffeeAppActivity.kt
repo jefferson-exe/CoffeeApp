@@ -13,6 +13,10 @@ class CoffeeAppActivity : AppCompatActivity() {
 
         Timber.plant(Timber.DebugTree())
 
+        btnAdd.setOnClickListener() {
+            i("add Button Pressed")
+        }
+
         i("CoffeeApp Activity started..")
     }
 }
