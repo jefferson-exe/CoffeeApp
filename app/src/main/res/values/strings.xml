@@ -2,4 +2,6 @@
     <string name="app_name">CoffeeApp</string>
     <string name="button_addCoffee">Add Coffee</string>
     <string name="hint_coffeeTitle">Coffee Title</string>
+    <string name="hint_placemarkDescription">Description </string>
+
 </resources>

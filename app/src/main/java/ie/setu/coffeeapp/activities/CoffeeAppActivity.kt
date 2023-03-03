@@ -27,8 +27,10 @@ class CoffeeAppActivity : AppCompatActivity() {
 
         binding.btnAdd.setOnClickListener() {
             coffeeapp.title = binding.coffeeappTitle.text.toString()
+            coffeeapp.description = binding.description.text.toString()
             if (coffeeapp.title.isNotEmpty()) {
-                coffees.add(coffeeapp)
+                coffees.add(coffeeapp.copy())
+
                 i("add Button Pressed: $coffeeapp.title")
                 for (i in coffees.indices)
                 { i("Placemark[$i]:${this.coffees[i]}") }
