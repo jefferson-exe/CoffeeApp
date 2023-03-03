@@ -3,5 +3,7 @@
     <string name="button_addCoffee">Add Coffee</string>
     <string name="hint_coffeeTitle">Coffee Title</string>
     <string name="hint_placemarkDescription">Description </string>
+    <string name="menu_addCoffee">Add</string>
+
 
 </resources>
