@@ -12,8 +12,8 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("CoffeeApp started")
-        coffees.add(CoffeeAppModel("One", "About one..."))
-        coffees.add(CoffeeAppModel("Two", "About two..."))
-        coffees.add(CoffeeAppModel("Three", "About three..."))
+        // coffees.add(CoffeeAppModel("One", "About one..."))
+        // coffees.add(CoffeeAppModel("Two", "About two..."))
+        // coffees.add(CoffeeAppModel("Three", "About three..."))
     }
 }

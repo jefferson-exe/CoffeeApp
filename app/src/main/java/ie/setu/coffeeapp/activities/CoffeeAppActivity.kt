@@ -28,8 +28,11 @@ class CoffeeAppActivity : AppCompatActivity() {
                 if (coffeeapp.title.isNotEmpty()) {
                     app.coffees.add(coffeeapp.copy())
                     i("add Button Pressed: ${coffeeapp}")
-                    for (i in app.coffees.indices)
+                    for (i in app.coffees.indices) {
                         { i("Coffeeapp[$i]:${this.app.coffees[i]}") }
+                    }
+                    setResult(RESULT_OK)
+                    finish()
                 }
                 else {
                     Snackbar.make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
