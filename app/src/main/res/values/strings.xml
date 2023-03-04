@@ -4,5 +4,5 @@
     <string name="hint_coffeeTitle">Coffee Title</string>
     <string name="hint_placemarkDescription">Description </string>
     <string name="menu_addCoffee">Add</string>
-
+    <string name="menu_cancelCoffee">Cancel</string>
 </resources>
