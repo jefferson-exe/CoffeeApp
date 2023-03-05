@@ -30,7 +30,7 @@ class CoffeeAppActivity : AppCompatActivity() {
             setSupportActionBar(binding.toolbarAdd)
 
 
-        app = application as MainApp
+            app = application as MainApp
             i("CoffeeApp Activity started...")
             binding.btnAdd.setOnClickListener() {
                 coffeeapp.title = binding.coffeeappTitle.text.toString()
