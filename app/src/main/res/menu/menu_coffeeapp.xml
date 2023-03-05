@@ -12,4 +12,5 @@
         android:id="@+id/item_cancel"
         android:title="@string/menu_cancelCoffee"
         app:showAsAction="always"/>
+
 </menu>

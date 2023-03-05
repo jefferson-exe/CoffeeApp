@@ -1,16 +1,15 @@
 package ie.setu.coffeeapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
+//import android.os.Build.VERSION_CODES.R
+import ie.setu.coffeeapp.R
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import ie.setu.coffeeapp.R
 import ie.setu.coffeeapp.databinding.ActivityCoffeeappBinding
 import ie.setu.coffeeapp.main.MainApp
 import ie.setu.coffeeapp.models.CoffeeAppModel
-import timber.log.Timber
-import timber.log.Timber.i
 
 class CoffeeAppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCoffeeappBinding
@@ -22,16 +21,12 @@ class CoffeeAppActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
             binding = ActivityCoffeeappBinding.inflate(layoutInflater)
             setContentView(binding.root)
-
             binding = ActivityCoffeeappBinding.inflate(layoutInflater)
             setContentView(binding.root)
-
             binding.toolbarAdd.title = title
             setSupportActionBar(binding.toolbarAdd)
-
-
             app = application as MainApp
-            i("CoffeeApp Activity started...")
+            //i("CoffeeApp Activity started...")
             binding.btnAdd.setOnClickListener() {
                 coffeeapp.title = binding.coffeeappTitle.text.toString()
                 coffeeapp.description = binding.description.text.toString()
@@ -49,7 +44,7 @@ class CoffeeAppActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_coffeeapp, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -61,6 +56,4 @@ class CoffeeAppActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 }

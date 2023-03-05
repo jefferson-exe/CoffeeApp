@@ -22,7 +22,7 @@ class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val coffeeapp = coffees[holder.adapterPosition]
-        holder.bind(coffeeapp)
+        holder.bind(coffeeapp, listener)
     }
 
     override fun getItemCount(): Int = coffees.size
@@ -30,9 +30,10 @@ class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
     class MainHolder(private val binding : CardCoffeeappBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(coffeeapp: CoffeeAppModel) {
+        fun bind(coffeeapp: CoffeeAppModel, listener: CoffeeAppListener) {
             binding.coffeeappTitle.text = coffeeapp.title
             binding.description.text = coffeeapp.description
+            binding.root.setOnClickListener { listener.onCoffeeAppClick(coffeeapp) }
         }
     }
 }

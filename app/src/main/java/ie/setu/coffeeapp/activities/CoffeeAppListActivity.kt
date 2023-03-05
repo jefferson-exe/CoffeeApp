@@ -9,10 +9,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.setu.coffeeapp.R
 import ie.setu.coffeeapp.adapters.CoffeeAppAdapter
+import ie.setu.coffeeapp.adapters.CoffeeAppListener
 import ie.setu.coffeeapp.databinding.ActivityCoffeeAppListBinding
 import ie.setu.coffeeapp.main.MainApp
+import ie.setu.coffeeapp.models.CoffeeAppModel
 
-class CoffeeAppListActivity : AppCompatActivity() {
+class CoffeeAppListActivity : AppCompatActivity(), CoffeeAppListener {
 
     lateinit var app: MainApp
     private lateinit var binding: ActivityCoffeeAppListBinding
@@ -21,7 +23,6 @@ class CoffeeAppListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCoffeeAppListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
 
@@ -29,13 +30,13 @@ class CoffeeAppListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        // binding.recyclerView.adapter = CoffeeAppAdapter(app.coffees)
-        binding.recyclerView.adapter = CoffeeAppAdapter(app.coffees.findAll())
+        binding.recyclerView.adapter
+        CoffeeAppAdapter(app.coffees.findAll(),this)
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_coffeeapp, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -59,6 +60,20 @@ class CoffeeAppListActivity : AppCompatActivity() {
             }
         }
 
+    override fun onCoffeeAppClick(placemark: CoffeeAppModel) {
+        val launcherIntent = Intent(this, CoffeeAppActivity::class.java)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,app.coffees.findAll().size)
+            }
+        }
 }
 
 
