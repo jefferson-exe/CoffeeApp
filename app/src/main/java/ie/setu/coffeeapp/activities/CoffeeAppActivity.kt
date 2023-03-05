@@ -36,11 +36,8 @@ class CoffeeAppActivity : AppCompatActivity() {
                 coffeeapp.title = binding.coffeeappTitle.text.toString()
                 coffeeapp.description = binding.description.text.toString()
                 if (coffeeapp.title.isNotEmpty()) {
-                    app.coffees.add(coffeeapp.copy())
-                    i("add Button Pressed: ${coffeeapp}")
-                    for (i in app.coffees.indices) {
-                        { i("Coffeeapp[$i]:${this.app.coffees[i]}") }
-                    }
+                    // app.placemarks.add(placemark.copy())
+                    app.coffees.create(coffeeapp.copy())
                     setResult(RESULT_OK)
                     finish()
                 }
