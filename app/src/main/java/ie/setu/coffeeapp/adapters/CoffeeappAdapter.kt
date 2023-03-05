@@ -6,7 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import ie.setu.coffeeapp.databinding.CardCoffeeappBinding
 import ie.setu.coffeeapp.models.CoffeeAppModel
 
-class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>) :
+interface CoffeeAppListener {
+    fun onCoffeeAppClick(coffeeapp: CoffeeAppModel)
+}
+
+class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
+                                   private val listener: CoffeeAppListener) :
     RecyclerView.Adapter<CoffeeAppAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
