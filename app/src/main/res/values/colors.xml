@@ -10,4 +10,9 @@
     <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#4c90af</color>
+
+    //New colors
+    <color name="orange">#FFA500</color>color>
+    <color name="darkgrey">#5A5A5A</color>color>
+
 </resources>

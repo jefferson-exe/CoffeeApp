@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ie.setu.coffeeapp.activities.CoffeeAppActivity">
+    tools:context="ie.setu.coffeeapp.activities.CoffeeAppActivity"
+    android:background="@color/darkgrey">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +27,8 @@
                 android:id="@+id/toolbarAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:titleTextColor="@color/colorPrimary" />
+                app:titleTextColor="@color/colorPrimary"
+                android:background="@color/orange"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <ScrollView
@@ -51,7 +53,7 @@
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp" />
 
                 <EditText
@@ -59,13 +61,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:hint="@string/hint_placemarkDescription"
+                    android:hint="@string/hint_coffeeappkDescription"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp" />
+
                 <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
@@ -78,6 +81,23 @@
                     android:text="@string/button_addCoffee"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/btnDel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/delete_coffee"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    app:layout_anchor="@+id/recyclerView"
+                    app:layout_anchorGravity="center" />
+
+
 
 
             </LinearLayout>
