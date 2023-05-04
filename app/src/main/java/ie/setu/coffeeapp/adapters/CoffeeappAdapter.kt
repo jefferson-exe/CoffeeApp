@@ -31,8 +31,10 @@ class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(coffeeapp: CoffeeAppModel, listener: CoffeeAppListener) {
-            binding.coffeeappTitle.text = coffeeapp.title
-            binding.description.text = coffeeapp.description
+            binding.coffeeTitle.text = coffeeapp.title
+            binding.coffeeBrand.text = coffeeapp.brand
+            binding.coffeePrice.text = coffeeapp.price.toString()
+            binding.coffeeShots.text = coffeeapp.shots.toString()
             binding.root.setOnClickListener { listener.onCoffeeAppClick(coffeeapp) }
         }
     }

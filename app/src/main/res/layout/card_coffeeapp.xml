@@ -13,7 +13,7 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/coffeeappTitle"
+            android:id="@+id/coffeeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -21,10 +21,24 @@
             tools:text="A Title" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/coffeeBrand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/coffeeappTitle"
+            android:layout_below="@id/coffeeTitle"
+            tools:text="A Description" />
+
+        <TextView
+            android:id="@+id/coffeePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coffeeBrand"
+            tools:text="A Description" />
+
+        <TextView
+            android:id="@+id/coffeeShots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/coffeePrice"
             tools:text="A Description" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

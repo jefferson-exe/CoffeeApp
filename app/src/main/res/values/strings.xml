@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">CoffeeApp</string>
     <string name="button_addCoffee">Add Coffee</string>
+
     <string name="hint_coffeeTitle">Coffee Title</string>
-    <string name="hint_coffeeappkDescription">Description </string>
+    <string name="hint_coffeeBrand">Coffee Brand </string>
+    <string name="hint_coffeePrice">Coffee Price </string>
+    <string name="hint_coffeeShots">Expresso Shots </string>
+
     <string name="menu_addCoffee">Add</string>
     <string name="menu_cancelCoffee">Cancel</string>
-    <string name="enter_coffee_title"> Please enter a Coffee Title </string>
+
+    <string name="enter_coffeetitle"> Please enter a Coffee Title </string>
     <string name="save_coffee">Save</string>
-    <string name="delete_coffee">Delete</string>string>
 
 
 </resources>

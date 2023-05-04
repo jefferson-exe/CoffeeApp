@@ -9,8 +9,6 @@ import com.google.android.material.snackbar.Snackbar
 import ie.setu.coffeeapp.databinding.ActivityCoffeeappBinding
 import ie.setu.coffeeapp.main.MainApp
 import ie.setu.coffeeapp.models.CoffeeAppModel
-import timber.log.Timber
-import timber.log.Timber.i
 
 class CoffeeAppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCoffeeappBinding
@@ -18,7 +16,6 @@ class CoffeeAppActivity : AppCompatActivity() {
     var edit = false
 
     lateinit var app : MainApp
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -33,16 +30,20 @@ class CoffeeAppActivity : AppCompatActivity() {
             if (intent.hasExtra("coffee_edit")) {
                 edit = true
                 coffeeapp = intent.extras?.getParcelable("coffee_edit")!!
-                binding.coffeeappTitle.setText(coffeeapp.title)
-                binding.description.setText(coffeeapp.description)
+                binding.coffeeTitle.setText(coffeeapp.title)
+                binding.coffeeBrand.setText(coffeeapp.brand)
+                binding.coffeePrice.setTextSize(coffeeapp.price)
+                binding.coffeeShots.setText(coffeeapp.shots)
             }
 
             binding.btnAdd.setOnClickListener() {
-                coffeeapp.title = binding.coffeeappTitle.text.toString()
-                coffeeapp.description = binding.description.text.toString()
+                coffeeapp.title = binding.coffeeTitle.text.toString()
+                coffeeapp.brand = binding.coffeeBrand.text.toString()
+                coffeeapp.price = binding.coffeePrice.text.toString().toFloat()
+                coffeeapp.shots = binding.coffeeShots.text.toString().toInt()
                 if (coffeeapp.title.isEmpty()) {
                     Snackbar
-                        .make(it,R.string.enter_coffee_title, Snackbar.LENGTH_LONG)
+                        .make(it,R.string.enter_coffeetitle, Snackbar.LENGTH_LONG)
                         .show()
                 }
                 else {
@@ -57,17 +58,7 @@ class CoffeeAppActivity : AppCompatActivity() {
                 }
 
             }
-
-
-        binding.btnDel.setOnClickListener() {
-            app.coffees.delete(coffeeapp)
-            setResult(RESULT_OK)
-            finish()
-            }
-
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_coffeeapp, menu)

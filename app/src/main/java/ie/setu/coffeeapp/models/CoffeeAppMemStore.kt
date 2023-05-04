@@ -26,21 +26,14 @@ internal fun getId(): Long {
             var foundCoffeeApp: CoffeeAppModel? = coffees.find { p -> p.id == coffeeapp.id }
             if (foundCoffeeApp != null) {
                 foundCoffeeApp.title = coffeeapp.title
-                foundCoffeeApp.description = coffeeapp.description
+                foundCoffeeApp.brand = coffeeapp.brand
+                foundCoffeeApp.price = coffeeapp.price
+                foundCoffeeApp.shots = coffeeapp.shots
                 logAll()
             }
         }
 
-        override fun delete(coffeeapp: CoffeeAppModel) {
-            coffeeapp.id = getId()
-            coffees.removeAt(0)
-            logAll()
-        }
-
-
-
         private fun logAll() {
             coffees.forEach { i("${it}") }
         }
-
     }

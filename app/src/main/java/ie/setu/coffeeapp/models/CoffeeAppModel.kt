@@ -4,8 +4,11 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CoffeeAppModel(var id: Long = 0,
-                          var title: String = "",
-                          var description: String = "") : Parcelable
+data class CoffeeAppModel(
+    var id: Long = 0,
+    var title: String = "",
+    var brand: String = "",
+    var price: Float = 0.0F,
+    var shots: Int = 0) : Parcelable
 
 

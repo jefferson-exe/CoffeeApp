@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
 import ie.setu.coffeeapp.R
 import ie.setu.coffeeapp.adapters.CoffeeAppAdapter
 import ie.setu.coffeeapp.adapters.CoffeeAppListener
@@ -22,7 +21,6 @@ class CoffeeAppListActivity : AppCompatActivity(), CoffeeAppListener {
     private lateinit var binding: ActivityCoffeeAppListBinding
     var coffeeapp = CoffeeAppModel()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCoffeeAppListBinding.inflate(layoutInflater)
@@ -35,10 +33,7 @@ class CoffeeAppListActivity : AppCompatActivity(), CoffeeAppListener {
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
         binding.recyclerView.adapter = CoffeeAppAdapter(app.coffees.findAll(), this)
-
-
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)

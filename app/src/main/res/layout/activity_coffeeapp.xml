@@ -43,7 +43,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/coffeeappTitle"
+                    android:id="@+id/coffeeTitle"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_margin="8dp"
@@ -57,11 +57,39 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/description"
+                    android:id="@+id/coffeeBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:hint="@string/hint_coffeeappkDescription"
+                    android:hint="@string/hint_coffeeBrand"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/coffeePrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints="hint"
+                    android:hint="@string/hint_coffeePrice"
+                    android:inputType="text"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:padding="8dp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/coffeeShots"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_margin="8dp"
+                    android:autofillHints="hint"
+                    android:hint="@string/hint_coffeeShots"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -82,26 +110,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/btnDel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:stateListAnimator="@null"
-                    android:text="@string/delete_coffee"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
-                    app:layout_anchor="@+id/recyclerView"
-                    app:layout_anchorGravity="center" />
-
-
-
-
             </LinearLayout>
         </ScrollView>
-
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
