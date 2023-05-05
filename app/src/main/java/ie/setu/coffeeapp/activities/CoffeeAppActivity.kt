@@ -1,14 +1,18 @@
 package ie.setu.coffeeapp.activities
 
+import android.content.Intent
 import ie.setu.coffeeapp.R
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.coffeeapp.databinding.ActivityCoffeeappBinding
 import ie.setu.coffeeapp.main.MainApp
 import ie.setu.coffeeapp.models.CoffeeAppModel
+import timber.log.Timber.i
 
 class CoffeeAppActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCoffeeappBinding
@@ -16,6 +20,23 @@ class CoffeeAppActivity : AppCompatActivity() {
     var edit = false
 
     lateinit var app : MainApp
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -58,6 +79,10 @@ class CoffeeAppActivity : AppCompatActivity() {
                 }
 
             }
+
+        binding.chooseImage.setOnClickListener {
+            i("Select image")
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

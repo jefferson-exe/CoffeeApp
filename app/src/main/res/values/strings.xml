@@ -14,5 +14,8 @@
     <string name="enter_coffeetitle"> Please enter a Coffee Title </string>
     <string name="save_coffee">Save</string>
 
+    <string name="select_placemark_image">Select placemark image</string>
+
+
 
 </resources>
