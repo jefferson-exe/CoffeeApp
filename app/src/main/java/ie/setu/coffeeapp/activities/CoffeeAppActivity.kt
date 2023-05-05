@@ -75,6 +75,10 @@ class CoffeeAppActivity : AppCompatActivity() {
             binding.chooseImage.setOnClickListener {
                 showImagePicker(imageIntentLauncher)
             }
+
+            binding.coffeeLocation.setOnClickListener {
+                i ("Set Location Pressed")
+            }
             registerImagePickerCallback()
     }
 
