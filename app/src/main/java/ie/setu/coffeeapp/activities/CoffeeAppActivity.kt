@@ -1,6 +1,7 @@
 package ie.setu.coffeeapp.activities
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -39,11 +40,13 @@ class CoffeeAppActivity : AppCompatActivity() {
                 binding.coffeeBrand.setText(coffeeapp.brand)
                 //binding.coffeePrice.setTextSize(coffeeapp.price)
                 // binding.coffeeShots.setText(coffeeapp.shots)
-
                 //... as before
                 Picasso.get()
                     .load(coffeeapp.image)
                     .into(binding.coffeeImage)
+                if (coffeeapp.image != Uri.EMPTY) {
+                    binding.chooseImage.setText(R.string.change_coffee_image)
+                }
 
             }
 
@@ -101,6 +104,7 @@ class CoffeeAppActivity : AppCompatActivity() {
                             Picasso.get()
                                 .load(coffeeapp.image)
                                 .into(binding.coffeeImage)
+                            binding.chooseImage.setText(R.string.change_coffee_image)
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

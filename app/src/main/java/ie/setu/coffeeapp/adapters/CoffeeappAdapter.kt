@@ -3,6 +3,7 @@ package ie.setu.coffeeapp.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import ie.setu.coffeeapp.databinding.CardCoffeeappBinding
 import ie.setu.coffeeapp.models.CoffeeAppModel
 
@@ -35,6 +36,7 @@ class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
             binding.coffeeBrand.text = coffeeapp.brand
             binding.coffeePrice.text = coffeeapp.price.toString()
             binding.coffeeShots.text = coffeeapp.shots.toString()
+            Picasso.get().load(coffeeapp.image).resize(200,200).into(binding.imageIcon)
             binding.root.setOnClickListener { listener.onCoffeeAppClick(coffeeapp) }
         }
     }
