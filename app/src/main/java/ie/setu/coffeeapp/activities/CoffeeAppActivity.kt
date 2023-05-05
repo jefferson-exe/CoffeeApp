@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import ie.setu.coffeeapp.databinding.ActivityCoffeeappBinding
+import ie.setu.coffeeapp.helpers.showImagePicker
 import ie.setu.coffeeapp.main.MainApp
 import ie.setu.coffeeapp.models.CoffeeAppModel
 import timber.log.Timber.i
@@ -83,6 +84,11 @@ class CoffeeAppActivity : AppCompatActivity() {
         binding.chooseImage.setOnClickListener {
             i("Select image")
         }
+
+        binding.chooseImage.setOnClickListener {
+            showImagePicker(imageIntentLauncher)
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
