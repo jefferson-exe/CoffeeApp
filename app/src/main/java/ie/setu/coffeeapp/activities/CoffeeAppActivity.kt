@@ -15,6 +15,7 @@ import ie.setu.coffeeapp.databinding.ActivityCoffeeappBinding
 import ie.setu.coffeeapp.main.MainApp
 import ie.setu.coffeeapp.models.CoffeeAppModel
 import ie.setu.coffeeapp.helpers.showImagePicker
+import ie.setu.coffeeapp.models.Location
 import timber.log.Timber.i
 
 class CoffeeAppActivity : AppCompatActivity() {
@@ -22,6 +23,8 @@ class CoffeeAppActivity : AppCompatActivity() {
     var coffeeapp = CoffeeAppModel()
     lateinit var app : MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
+    private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -79,7 +82,20 @@ class CoffeeAppActivity : AppCompatActivity() {
             binding.coffeeLocation.setOnClickListener {
                 i ("Set Location Pressed")
             }
-            registerImagePickerCallback()
+            binding.coffeeLocation.setOnClickListener {
+                val launcherIntent = Intent(this, MapActivity::class.java)
+                mapIntentLauncher.launch(launcherIntent)
+            }
+            binding.coffeeLocation.setOnClickListener {
+                val location = Location(52.245696, -7.139102, 15f)
+                val launcherIntent = Intent(this, MapActivity::class.java)
+                .putExtra("location", location)
+                mapIntentLauncher.launch(launcherIntent)
+        }
+
+
+        registerImagePickerCallback()
+        registerMapCallback()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -115,4 +131,11 @@ class CoffeeAppActivity : AppCompatActivity() {
                 }
             }
     }
+
+    private fun registerMapCallback() {
+        mapIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { i("Map Loaded") }
+    }
+
 }
