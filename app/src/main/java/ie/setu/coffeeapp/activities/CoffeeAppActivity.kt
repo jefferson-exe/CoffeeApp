@@ -1,6 +1,7 @@
 package ie.setu.coffeeapp.activities
 
 import android.content.Intent
+//import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -24,8 +25,7 @@ class CoffeeAppActivity : AppCompatActivity() {
     lateinit var app : MainApp
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     private lateinit var mapIntentLauncher : ActivityResultLauncher<Intent>
-    var location = Location(52.245696, -7.139102, 15f)
-
+    // var location = Location(52.245696, -7.139102, 15f)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,6 +82,12 @@ class CoffeeAppActivity : AppCompatActivity() {
             }
 
             binding.coffeeLocation.setOnClickListener {
+                val location = Location(52.245696, -7.139102, 15f)
+                if (coffeeapp.zoom != 0f) {
+                    location.lat =  coffeeapp.lat
+                    location.lng = coffeeapp.lng
+                    location.zoom = coffeeapp.zoom
+                }
                 val launcherIntent = Intent(this, MapActivity::class.java)
                 .putExtra("location", location)
                 mapIntentLauncher.launch(launcherIntent)
@@ -134,8 +140,11 @@ class CoffeeAppActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Location ${result.data.toString()}")
-                            location = result.data!!.extras?.getParcelable("location")!!
+                            val location = result.data!!.extras?.getParcelable<Location>("location")!!
                             i("Location == $location")
+                            coffeeapp.lat = location.lat
+                            coffeeapp.lng = location.lng
+                            coffeeapp.zoom = location.zoom
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

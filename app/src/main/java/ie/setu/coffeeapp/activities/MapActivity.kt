@@ -16,7 +16,7 @@ import ie.setu.coffeeapp.R
 import ie.setu.coffeeapp.databinding.ActivityMapBinding
 import ie.setu.coffeeapp.models.Location
 
-class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener {
+class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapBinding
@@ -42,6 +42,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
             .position(loc)
         mMap.addMarker(options)
         mMap.setOnMarkerDragListener(this)
+        mMap.setOnMarkerClickListener(this)
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 
@@ -65,6 +66,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerD
         setResult(Activity.RESULT_OK, resultIntent)
         finish()
         super.onBackPressed()
+    }
+
+    override fun onMarkerClick(p0: Marker): Boolean {
+        TODO("Not yet implemented")
     }
 
 }

@@ -11,7 +11,10 @@ data class CoffeeAppModel(
     var brand: String = "",
     var price: Float = 0.0F,
     var shots: Int = 0,
-    var image: Uri = Uri.EMPTY
+    var image: Uri = Uri.EMPTY,
+    var lat: Double = 0.0,
+    var lng: Double = 0.0,
+    var zoom: Float = 0f
 ) : Parcelable
 
 @Parcelize

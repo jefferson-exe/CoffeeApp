@@ -30,6 +30,9 @@ internal fun getId(): Long {
                 foundCoffeeApp.price = coffeeapp.price
                 foundCoffeeApp.shots = coffeeapp.shots
                 foundCoffeeApp.image = coffeeapp.image
+                foundCoffeeApp.lat = coffeeapp.lat
+                foundCoffeeApp.lng = coffeeapp.lng
+                foundCoffeeApp.zoom = coffeeapp.zoom
                 logAll()
             }
         }
