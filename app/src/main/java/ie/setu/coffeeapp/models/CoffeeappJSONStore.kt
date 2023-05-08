@@ -42,7 +42,17 @@ class CoffeeappJSONStore(private val context: Context) : CoffeeAppStore {
 
 
     override fun update(coffeeapp: CoffeeAppModel) {
-        // todo
+        val coffeeList = findAll() as ArrayList<CoffeeAppModel>
+        var foundCoffeeapp: CoffeeAppModel? = coffeeList.find { p -> p.id == coffeeapp.id }
+        if (foundCoffeeapp != null) {
+            foundCoffeeapp.title = coffeeapp.title
+            foundCoffeeapp.brand = coffeeapp.brand
+            foundCoffeeapp.image = coffeeapp.image
+            foundCoffeeapp.lat = coffeeapp.lat
+            foundCoffeeapp.lng = coffeeapp.lng
+            foundCoffeeapp.zoom = coffeeapp.zoom
+        }
+        serialize()
     }
 
     private fun serialize() {
