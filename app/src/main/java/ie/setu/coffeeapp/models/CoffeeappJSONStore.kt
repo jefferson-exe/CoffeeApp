@@ -4,24 +4,24 @@ import android.content.Context
 import android.net.Uri
 import com.google.gson.*
 import com.google.gson.reflect.TypeToken
-import org.wit.placemark.helpers.*
+import ie.setu.coffeeapp.helpers.*
 import timber.log.Timber
 import java.lang.reflect.Type
 import java.util.*
 
-const val JSON_FILE = "placemarks.json"
+const val JSON_FILE = "coffees.json"
 val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting()
     .registerTypeAdapter(Uri::class.java, UriParser())
     .create()
-val listType: Type = object : TypeToken<ArrayList<PlacemarkModel>>() {}.type
+val listType: Type = object : TypeToken<ArrayList<CoffeeAppModel>>() {}.type
 
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class PlacemarkJSONStore(private val context: Context) : CoffeeAppStore {
+class CoffeeappJSONStore(private val context: Context) : CoffeeAppStore {
 
-    var placemarks = mutableListOf<CoffeeAppStore>()
+    var coffees = mutableListOf<CoffeeAppModel>()
 
     init {
         if (exists(context, JSON_FILE)) {
@@ -29,34 +29,34 @@ class PlacemarkJSONStore(private val context: Context) : CoffeeAppStore {
         }
     }
 
-    override fun findAll(): MutableList<PlacemarkModel> {
+    override fun findAll(): MutableList<CoffeeAppModel> {
         logAll()
-        return placemarks
+        return coffees
     }
 
-    override fun create(placemark: PlacemarkModel) {
-        placemark.id = generateRandomId()
-        placemarks.add(placemark)
+    override fun create(coffeeapp: CoffeeAppModel) {
+        coffeeapp.id = generateRandomId()
+        coffees.add(coffeeapp)
         serialize()
     }
 
 
-    override fun update(placemark: PlacemarkModel) {
+    override fun update(coffeeapp: CoffeeAppModel) {
         // todo
     }
 
     private fun serialize() {
-        val jsonString = gsonBuilder.toJson(placemarks, listType)
+        val jsonString = gsonBuilder.toJson(coffees, listType)
         write(context, JSON_FILE, jsonString)
     }
 
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
-        placemarks = gsonBuilder.fromJson(jsonString, listType)
+        coffees = gsonBuilder.fromJson(jsonString, listType)
     }
 
     private fun logAll() {
-        placemarks.forEach { Timber.i("$it") }
+        coffees.forEach { Timber.i("$it") }
     }
 }
 
@@ -77,3 +77,6 @@ class UriParser : JsonDeserializer<Uri>,JsonSerializer<Uri> {
         return JsonPrimitive(src.toString())
     }
 }
+
+
+

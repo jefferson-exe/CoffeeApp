@@ -78,7 +78,7 @@ class CoffeeAppActivity : AppCompatActivity() {
             }
 
             binding.chooseImage.setOnClickListener {
-                showImagePicker(imageIntentLauncher)
+                showImagePicker(imageIntentLauncher,this)
             }
 
             binding.coffeeLocation.setOnClickListener {
@@ -120,7 +120,11 @@ class CoffeeAppActivity : AppCompatActivity() {
                     RESULT_OK -> {
                         if (result.data != null) {
                             i("Got Result ${result.data!!.data}")
-                            coffeeapp.image = result.data!!.data!!
+                            val image = result.data!!.data!!
+                            contentResolver.takePersistableUriPermission(image,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION)
+                            coffeeapp.image = image
+
                             Picasso.get()
                                 .load(coffeeapp.image)
                                 .into(binding.coffeeImage)
