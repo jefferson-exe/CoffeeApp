@@ -37,6 +37,10 @@ internal fun getId(): Long {
             }
         }
 
+        override fun delete(coffeeapp: CoffeeAppModel) {
+            coffees.remove(coffeeapp)
+        }
+
         private fun logAll() {
             coffees.forEach { i("${it}") }
         }

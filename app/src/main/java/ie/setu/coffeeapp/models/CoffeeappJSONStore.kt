@@ -55,6 +55,11 @@ class CoffeeappJSONStore(private val context: Context) : CoffeeAppStore {
         serialize()
     }
 
+    override fun delete(coffeeapp: CoffeeAppModel) {
+            coffees.remove(coffeeapp)
+            serialize()
+        }
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(coffees, listType)
         write(context, JSON_FILE, jsonString)
