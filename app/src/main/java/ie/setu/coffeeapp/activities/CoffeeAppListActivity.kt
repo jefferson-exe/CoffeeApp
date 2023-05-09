@@ -20,6 +20,8 @@ class CoffeeAppListActivity : AppCompatActivity(), CoffeeAppListener {
     lateinit var app: MainApp
     private lateinit var binding: ActivityCoffeeAppListBinding
     var coffeeapp = CoffeeAppModel()
+    private var position: Int = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,21 +62,25 @@ class CoffeeAppListActivity : AppCompatActivity(), CoffeeAppListener {
             }
         }
 
-    override fun onCoffeeAppClick(coffeeapp: CoffeeAppModel) {
-        val launcherIntent = Intent(this, CoffeeAppActivity::class.java)
-        launcherIntent.putExtra("coffee_edit", coffeeapp)
-        getClickResult.launch(launcherIntent)
-    }
-
     private val getClickResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.coffees.findAll().size)
+                notifyItemRemoved(position)
             }
-        }
+            else
+            binding.recyclerView.adapter = CoffeeAppAdapter(app.coffees.findAll(),this)
+    }
+
+    override fun onCoffeeAppClick(coffeeapp: CoffeeAppModel, position: Int) {
+        val launcherIntent = Intent(this, CoffeeAppActivity::class.java)
+        launcherIntent.putExtra("coffeee_edit", coffeeapp)
+        position = position
+        getClickResult.launch(launcherIntent)
+    }
+
 }
 
 

@@ -108,6 +108,11 @@ class CoffeeAppActivity : AppCompatActivity() {
             R.id.item_cancel -> {
                 finish()
             }
+            R.id.item_delete -> {
+                app.coffees.delete(coffeeapp)
+                setResult(RESULT_OK)
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

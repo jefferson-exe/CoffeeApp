@@ -8,7 +8,7 @@ import ie.setu.coffeeapp.databinding.CardCoffeeappBinding
 import ie.setu.coffeeapp.models.CoffeeAppModel
 
 interface CoffeeAppListener {
-    fun onCoffeeAppClick(coffeeapp: CoffeeAppModel)
+    fun onCoffeeAppClick(coffeeapp: CoffeeAppModel, position : Int)
 }
 
 class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
@@ -37,7 +37,7 @@ class CoffeeAppAdapter constructor(private var coffees: List<CoffeeAppModel>,
             binding.coffeePrice.text = coffeeapp.price.toString()
             binding.coffeeShots.text = coffeeapp.shots.toString()
             Picasso.get().load(coffeeapp.image).resize(200,200).into(binding.imageIcon)
-            binding.root.setOnClickListener { listener.onCoffeeAppClick(coffeeapp) }
+            binding.root.setOnClickListener { listener.onCoffeeAppClick(coffeeapp,adapterPosition) }
         }
     }
 }
